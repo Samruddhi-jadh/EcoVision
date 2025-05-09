@@ -1,0 +1,18 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load results
+results_path = "runs/detect/plastic_yolo/results.csv"
+df = pd.read_csv(results_path)
+
+# Plot loss curves
+plt.figure(figsize=(10, 6))
+plt.plot(df['      epoch'], df['          box_loss'], label='Box Loss')
+plt.plot(df['      epoch'], df['          cls_loss'], label='Class Loss')
+plt.plot(df['      epoch'], df['          obj_loss'], label='Objectness Loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.title('Training Loss over Epochs')
+plt.legend()
+plt.grid(True)
+plt.show()
